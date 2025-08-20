@@ -205,7 +205,10 @@ public class RubyDung implements Runnable {
 
 		while(Mouse.next()) {
 			if (Mouse.getEventButtonState()) {
-				Mouse.setGrabbed(true);
+				if (!Mouse.isMouseGrabbed()) {
+					Mouse.setGrabbed(true);
+					break;
+				}
 			}
 
 			if(Mouse.getEventButton() == 1 && Mouse.getEventButtonState() && this.hitResult != null) {
